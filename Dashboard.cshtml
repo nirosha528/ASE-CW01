@@ -1,201 +1,26 @@
 ﻿@{
-    ViewData["Title"] = "Manager Dashboard";
+    ViewData["Title"] = "Travel Agency Dashboard";
 }
 
-<div class="container py-5">
+<div class="container mt-5">
 
-    <!-- PAGE TITLE -->
+    <!-- HEADER -->
     <div class="text-center mb-5">
 
-        <h1 class="fw-bold display-5">
-            Manager (Admin) Dashboard
+        <h1 class="fw-bold text-primary">
+            Travel Agency Dashboard
         </h1>
 
-        <p class="text-muted">
-            Hotel Reservation System Control Panel
+        <p class="text-muted fs-5">
+            Manage customer bookings and hotel reservations easily
         </p>
 
-    </div>
+    </div></div>
 
     <!-- DASHBOARD CARDS -->
     <div class="row g-4">
 
-        <!-- VIEW REQUESTS -->
-        <div class="col-lg-3 col-md-6">
-
-            <div class="card shadow-lg border-0 dashboard-card text-center p-4">
-
-                <div class="dashboard-icon mb-3">
-                    📩
-                </div>
-
-                <h3 class="fw-bold">
-                    Requests
-                </h3>
-
-                <p class="text-muted">
-                    View customer reservation requests
-                </p>
-
-                <a href="/ReservationRequest/Index"
-                   class="btn btn-success rounded-pill px-4">
-
-                    View Reservations Requests
-
-                </a>
-
-            </div>
-
-        </div>
-
-        <!-- RESERVATIONS -->
-        <div class="col-lg-3 col-md-6">
-
-            <div class="card shadow-lg border-0 dashboard-card text-center p-4">
-
-                <div class="dashboard-icon mb-3">
-                    📅
-                </div>
-
-                <h3 class="fw-bold">
-                    Reservations
-                </h3>
-
-                <p class="text-muted">
-                    View all confirmed bookings
-                </p>
-                <a href="/Reservation/Index"
-                   class="btn btn-success rounded-pill px-4">
-
-                    View Reservations
-
-                </a>
-
-
-            </div>
-
-        </div>
-
-        <!-- ROOMS -->
-        <div class="col-lg-3 col-md-6">
-
-            <div class="card shadow-lg border-0 dashboard-card text-center p-4">
-
-                <div class="dashboard-icon mb-3">
-                    🏨
-                </div>
-
-                <h3 class="fw-bold">
-                    Rooms
-                </h3>
-
-                <p class="text-muted">
-                    Manage hotel rooms
-                </p>
-
-                <a asp-controller="Room"
-                   asp-action="Index"
-                   class="btn btn-warning rounded-pill">
-
-                    View Rooms
-
-                </a>
-
-            </div>
-
-        </div>
-
-        <!-- USERS -->
-        <div class="col-lg-3 col-md-6">
-
-            <div class="card shadow-lg border-0 dashboard-card text-center p-4">
-
-                <div class="dashboard-icon mb-3">
-                    👥
-                </div>
-
-                <h3 class="fw-bold">
-                    Users
-                </h3>
-
-                <p class="text-muted">
-                    Manage system users
-                </p>
-
-                <a asp-controller="User"
-                   asp-action="Index"
-                   class="btn btn-warning rounded-pill">
-
-                    Manage Users
-
-                </a>
-
-            </div>
-
-        </div>
-
-        <!-- REPORTS -->
-        <div class="col-lg-3 col-md-6">
-
-            <div class="card shadow-lg border-0 dashboard-card text-center p-4">
-
-                <div class="dashboard-icon mb-3">
-                    📊
-                </div>
-
-                <h3 class="fw-bold">
-                    Reports
-                </h3>
-
-                <p class="text-muted">
-                    View customer analytics
-                </p>
-
-                <a asp-controller="Report"
-                   asp-action="Index"
-                   class="btn btn-warning rounded-pill">
-
-                    View Reports
-
-                </a>
-
-            </div>
-
-        </div>
-
-
-
-
-        <!-- REVENUE REPORT -->
-        <div class="col-lg-3 col-md-6">
-
-            <div class="card shadow-lg border-0 dashboard-card text-center p-4">
-
-                <div class="dashboard-icon mb-3">
-                    💰
-                </div>
-
-                <h3 class="fw-bold">
-                    Revenue Report
-                </h3>
-
-                <p class="text-muted">
-                    View total hotel income and earnings
-                </p>
-
-                <a asp-controller="Report"
-                   asp-action="Revenue"
-                   class="btn btn-success rounded-pill">
-
-                    View Revenue
-
-                </a>
-
-            </div>
-
-        </div>
-
-        <!-- PAYMENT -->
+        <!-- ADD RESERVATION -->
         <div class="col-md-4">
 
             <div class="card shadow border-0 rounded-4 h-100">
@@ -203,21 +28,55 @@
                 <div class="card-body text-center p-4">
 
                     <div class="display-4 mb-3">
-                        💳
+                        🏨
                     </div>
 
                     <h4 class="fw-bold">
-                        Payments
+                        Add Reservation
                     </h4>
 
                     <p class="text-muted">
-                        Manage customer payments and billing records.
+                        Create a new hotel reservation for customers.
                     </p>
 
-                    <a href="/Payment/Create"
-                       class="btn btn-danger rounded-pill px-4">
+                    <a href="/Reservation/Create"
+                       class="btn btn-primary rounded-pill px-4">
 
-                        View Payments
+                        Add Reservation
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        
+
+        <!-- ROOM LIST -->
+        <div class="col-md-4">
+
+            <div class="card shadow border-0 rounded-4 h-100">
+
+                <div class="card-body text-center p-4">
+
+                    <div class="display-4 mb-3">
+                        🏨
+                    </div>
+
+                    <h4 class="fw-bold">
+                        Available Rooms
+                    </h4>
+
+                    <p class="text-muted">
+                        Check hotel room availability and details.
+                    </p>
+
+                    <a href="/Room/List"
+                       class="btn btn-warning rounded-pill px-4">
+
+                        View Rooms
 
                     </a>
 
@@ -228,27 +87,5 @@
         </div>
 
 
-    </div>
-
-</div>
-
-<style>
-
-    body {
-        background-color: #f8f9fa;
-    }
-
-    .dashboard-card {
-        border-radius: 20px;
-        transition: 0.4s;
-    }
-
-    .dashboard-card:hover {
-        transform: translateY(-10px);
-    }
-
-    .dashboard-icon {
-        font-size: 55px;
-    }
-
-</style>
+        
+   
