@@ -1,0 +1,243 @@
+﻿@{
+    ViewData["Title"] = "About Us";
+}
+
+<style>
+    body {
+        background: #f8f9fa;
+    }
+
+    .hero-section {
+        background: #ffffff;
+        border-radius: 20px;
+        padding: 50px 30px;
+        margin-bottom: 40px;
+        border: 1px solid #e9ecef;
+    }
+
+    .hero-title {
+        color: #212529;
+        font-weight: 700;
+    }
+
+    .hero-subtitle {
+        color: #6c757d;
+    }
+
+    .main-card {
+        border: none;
+        border-radius: 20px;
+    }
+
+    .section-title {
+        color: #212529;
+        font-weight: 700;
+    }
+
+    .feature-card {
+        border: none;
+        border-radius: 15px;
+        transition: 0.3s ease;
+    }
+
+        .feature-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.08);
+        }
+
+    .feature-blue {
+        background: #e8f1ff;
+    }
+
+    .feature-green {
+        background: #e8fff1;
+    }
+
+    .feature-orange {
+        background: #fff4e8;
+    }
+
+    .feature-purple {
+        background: #f3e8ff;
+    }
+
+    .feature-pink {
+        background: #ffe8f1;
+    }
+
+    .feature-cyan {
+        background: #e8fcff;
+    }
+
+    .contact-box {
+        background: #ffffff;
+        border: 1px solid #e9ecef;
+        border-radius: 15px;
+        padding: 25px;
+    }
+
+    .icon-large {
+        font-size: 3rem;
+    }
+</style>
+
+<div class="container py-5">
+
+    <!-- Header -->
+    <div class="hero-section text-center shadow-sm">
+        <i class="bi bi-building text-dark icon-large"></i>
+
+        <h1 class="display-4 hero-title mt-3">
+            Hotel Reservation 
+        </h1>
+
+        <p class="lead hero-subtitle">
+            Simplifying Hotel Operations & Enhancing Guest Experiences
+        </p>
+    </div>
+
+    <!-- Main Card -->
+    <div class="card main-card shadow-sm">
+        <div class="card-body p-5">
+
+            <!-- About -->
+            <section class="mb-5">
+                <h2 class="section-title mb-3">Who We Are</h2>
+                <p class="text-muted fs-5">
+                    The Hotel Reservation Management System is a modern web-based platform
+                    designed to streamline hotel operations and improve customer satisfaction.
+                    
+                </p>
+            </section>
+
+            <!-- Mission & Vision -->
+            <div class="row g-4 mb-5">
+
+                <div class="col-md-6">
+                    <div class="card shadow-sm h-100 border-0">
+                        <div class="card-body">
+                            <h4 class="fw-bold text-dark">
+                                <i class="bi bi-bullseye text-primary me-2"></i>
+                                Our Mission
+                            </h4>
+                            <p class="text-muted mb-0">
+                                To provide a reliable and user-friendly system that simplifies hotel
+                                operations and enhances guest booking experiences.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="card shadow-sm h-100 border-0">
+                        <div class="card-body">
+                            <h4 class="fw-bold text-dark">
+                                <i class="bi bi-eye text-success me-2"></i>
+                                Our Vision
+                            </h4>
+                            <p class="text-muted mb-0">
+                                To become a trusted digital solution in the hospitality industry
+                                by enabling smarter and more efficient hotel management.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Features -->
+            <section class="mb-5">
+                <h2 class="section-title mb-4">Key Features</h2>
+
+                <div class="row g-4">
+
+                    <div class="col-md-4">
+                        <div class="card feature-card feature-blue h-100">
+                            <div class="card-body text-center">
+                                <i class="bi bi-calendar-check text-primary fs-1"></i>
+                                <h5 class="mt-3 fw-bold">Reservations</h5>
+                                <p class="text-muted">Online booking management system.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card feature-card feature-green h-100">
+                            <div class="card-body text-center">
+                                <i class="bi bi-door-open text-success fs-1"></i>
+                                <h5 class="mt-3 fw-bold">Rooms</h5>
+                                <p class="text-muted">Track availability and occupancy.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card feature-card feature-orange h-100">
+                            <div class="card-body text-center">
+                                <i class="bi bi-credit-card text-warning fs-1"></i>
+                                <h5 class="mt-3 fw-bold">Payments</h5>
+                                <p class="text-muted">Secure billing system.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card feature-card feature-purple h-100">
+                            <div class="card-body text-center">
+                                <i class="bi bi-people text-secondary fs-1"></i>
+                                <h5 class="mt-3 fw-bold">Customers</h5>
+                                <p class="text-muted">Manage guest information.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card feature-card feature-pink h-100">
+                            <div class="card-body text-center">
+                                <i class="bi bi-box-arrow-in-right text-danger fs-1"></i>
+                                <h5 class="mt-3 fw-bold">Check-In/Out</h5>
+                                <p class="text-muted">Smooth guest handling.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card feature-card feature-cyan h-100">
+                            <div class="card-body text-center">
+                                <i class="bi bi-bar-chart-line text-info fs-1"></i>
+                                <h5 class="mt-3 fw-bold">Reports</h5>
+                                <p class="text-muted">Performance analytics.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Contact -->
+            <section>
+                <h2 class="section-title mb-4">Contact Information</h2>
+
+                <div class="contact-box shadow-sm text-center">
+
+                    <p class="mb-2">
+                        <i class="bi bi-envelope-fill text-dark me-2"></i>
+                        hotel@gmail.com
+                    </p>
+
+                    <p class="mb-2">
+                        <i class="bi bi-telephone-fill text-dark me-2"></i>
+                        +94 11 234 5678
+                    </p>
+
+                    <p class="mb-0">
+                        <i class="bi bi-geo-alt-fill text-dark me-2"></i>
+                        
+                    </p>
+
+                </div>
+            </section>
+
+        </div>
+    </div>
+</div>
