@@ -1,56 +1,49 @@
-﻿@model Hotelreservation.Models.Room
+﻿@model Hotelreservation.Models.User
 
-<div class="container mt-5">
+<div class="container mt-4">
 
-    <div class="card shadow p-4">
+    <h2>Edit User</h2>
 
-        <h2>Edit Room</h2>
+    <form asp-action="Edit" method="post">
 
-        <form asp-action="Edit" method="post">
+        <input type="hidden" asp-for="UserId" />
 
-            <input type="hidden" asp-for="RoomId" />
+        <div class="mb-2">
+            <input asp-for="FullName" class="form-control" placeholder="Full Name" />
+        </div>
 
-            <div class="mb-3">
-                <label>Room Number</label>
-                <input asp-for="RoomNumber" class="form-control" />
-            </div>
+        <div class="mb-2">
+            <input asp-for="Username" class="form-control" placeholder="Username" />
+        </div>
 
-            <div class="mb-3">
-                <label>Room Type</label>
-                <input asp-for="RoomType" class="form-control" />
-            </div>
+        <div class="mb-2">
+            <input asp-for="Email" class="form-control" placeholder="Email" />
+        </div>
 
-            <div class="mb-3">
-                <label>Price</label>
-                <input asp-for="PricePerNight" class="form-control" />
-            </div>
+        <div class="mb-2">
+            <input asp-for="PhoneNumber" class="form-control" placeholder="Phone" />
+        </div>
 
-            <div class="mb-3">
-                <label>Capacity</label>
-                <input asp-for="Capacity" class="form-control" />
-            </div>
+        <div class="mb-2">
+            <select asp-for="Role" class="form-control">
+                <option>Manager</option>
+                <option>Clerk</option>
+                <option>TravelAgency</option>
+                <option>User</option>
+            </select>
+        </div>
 
-            <div class="mb-3">
-                <label>Description</label>
-                <textarea asp-for="Description" class="form-control"></textarea>
-            </div>
+        <button class="btn btn-success w-100">
+            Update User
+        </button>
 
-            <div class="mb-3">
-                <label>Image URL</label>
-                <input asp-for="ImageUrl" class="form-control" />
-            </div>
-
-            <div class="form-check mb-3">
-                <input asp-for="IsAvailable" class="form-check-input" />
-                <label>Available</label>
-            </div>
-
-            <button type="submit" class="btn btn-success w-100">
-                Update Room
-            </button>
-
-        </form>
-
-    </div>
+    </form>
 
 </div>
+
+
+<a asp-controller="Manager"
+   asp-action="Dashboard"
+   class="btn btn-secondary mb-3">
+    ⬅ Back to Admin Dashboard
+</a>
