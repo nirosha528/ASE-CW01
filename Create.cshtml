@@ -1,89 +1,99 @@
-﻿@model Hotelreservation.Models.Payment
+﻿@model Hotelreservation.Models.Reservation
 
 @{
-    ViewData["Title"] = "Create Payment";
-    var payments = ViewBag.Payments as List<Hotelreservation.Models.Payment>;
+    ViewData["Title"] = "Create Reservation";
 }
 
-<div class="container mt-4">
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success text-center fw-bold">
+        @TempData["Success"]
+    </div>
+}
 
-    <h2 class="text-primary">Create Payment</h2>
+<div class="container mt-5">
 
-    @if (TempData["Success"] != null)
-    {
-        <div class="alert alert-success">
-            @TempData["Success"]
-        </div>
-    }
+    <div class="card shadow p-4">
 
-    <!-- PAYMENT FORM -->
-    <form asp-action="Create" method="post">
+        <h2 class="mb-4">Add Reservation</h2>
 
-        <input asp-for="ReservationId" class="form-control mb-2" placeholder="Reservation ID" />
-        <input asp-for="CustomerName" class="form-control mb-2" placeholder="Customer Name" />
+        <form asp-action="Create" method="post">
+            @Html.AntiForgeryToken()
 
-        <input asp-for="RoomCharge" class="form-control mb-2" placeholder="Room Charge" />
-        <input asp-for="RestaurantCharge" class="form-control mb-2" placeholder="Restaurant Charge" />
-        <input asp-for="RoomServiceCharge" class="form-control mb-2" placeholder="Room Service" />
-        <input asp-for="LaundryCharge" class="form-control mb-2" placeholder="Laundry" />
-        <input asp-for="TelephoneCharge" class="form-control mb-2" placeholder="Telephone" />
-        <input asp-for="ClubFacilityCharge" class="form-control mb-2" placeholder="Club" />
-        <input asp-for="TravelAgencyDiscount" class="form-control mb-2" placeholder="Discount" />
+            <div asp-validation-summary="All" class="text-danger"></div>
 
-        <select asp-for="PaymentMethod" class="form-control mb-3">
-            <option>Cash</option>
-            <option>Credit Card</option>
-        </select>
+            <!-- Customer Name -->
+            <div class="mb-3">
+                <input asp-for="CustomerName" class="form-control" placeholder="Customer Name" />
+                <span asp-validation-for="CustomerName" class="text-danger"></span>
+            </div>
 
-        <button type="submit" class="btn btn-success">
-            Save Payment
-        </button>
+            <!-- Email -->
+            <div class="mb-3">
+                <input asp-for="Email" class="form-control" placeholder="Email" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
 
-    </form>
+            <!-- Phone -->
+            <div class="mb-3">
+                <input asp-for="PhoneNumber" class="form-control" placeholder="Phone Number" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
 
-    <hr />
+            <!-- ROOM DROPDOWN -->
+            <div class="mb-3">
+                <select asp-for="RoomId" class="form-control">
+                    <option value="">-- Select Room --</option>
 
-    <!-- PAYMENT LIST BELOW FORM -->
-    <h3 class="mt-4">Payment Records</h3>
+                    @foreach (var room in ViewBag.Rooms)
+                    {
+                        <option value="@room.RoomId">
+                            Room @room.RoomId
+                        </option>
+                    }
+                </select>
+                <span asp-validation-for="RoomId" class="text-danger"></span>
+            </div>
 
-    <table class="table table-bordered table-striped mt-2">
+            <!-- Check In -->
+            <div class="mb-3">
+                <label>Check In</label>
+                <input asp-for="CheckInDate" type="date" class="form-control" />
+                <span asp-validation-for="CheckInDate" class="text-danger"></span>
+            </div>
 
-        <thead class="table-dark">
-            <tr>
-                <th>Customer</th>
-                <th>Room</th>
-                <th>Restaurant</th>
-                <th>Service</th>
-                <th>Laundry</th>
-                <th>Telephone</th>
-                <th>Club</th>
-                <th>Discount</th>
-                <th>Total</th>
-            </tr>
-        </thead>
+            <!-- Check Out -->
+            <div class="mb-3">
+                <label>Check Out</label>
+                <input asp-for="CheckOutDate" type="date" class="form-control" />
+                <span asp-validation-for="CheckOutDate" class="text-danger"></span>
+            </div>
 
-        <tbody>
+            <!-- Guests -->
+            <div class="mb-3">
+                <input asp-for="NumberOfGuests" class="form-control" placeholder="Number of Guests" />
+                <span asp-validation-for="NumberOfGuests" class="text-danger"></span>
+            </div>
 
-            @if (payments != null)
-            {
-                foreach (var item in payments)
-                {
-                    <tr>
-                        <td>@item.CustomerName</td>
-                        <td>@item.RoomCharge</td>
-                        <td>@item.RestaurantCharge</td>
-                        <td>@item.RoomServiceCharge</td>
-                        <td>@item.LaundryCharge</td>
-                        <td>@item.TelephoneCharge</td>
-                        <td>@item.ClubFacilityCharge</td>
-                        <td>@item.TravelAgencyDiscount</td>
-                        <td><b>@item.TotalAmount</b></td>
-                    </tr>
-                }
-            }
+            <!-- Special Request -->
+            <div class="mb-3">
+                <textarea asp-for="SpecialRequest" class="form-control" placeholder="Special Request"></textarea>
+            </div>
 
-        </tbody>
+            <!-- BUTTON -->
+            <button type="submit" class="btn btn-success w-100">
+                Save Reservation
+            </button>
 
-    </table>
+        </form>
+
+    </div>
 
 </div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
