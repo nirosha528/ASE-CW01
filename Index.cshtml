@@ -1,43 +1,31 @@
-﻿@model List<Hotelreservation.Models.Reservation>
+﻿@model List<Hotelreservation.Models.ReservationRequest>
 
-@if (TempData["Success"] != null)
+
+@if (TempData["SuccessMessage"] != null)
 {
-    <div class="alert alert-success text-center fw-bold">
-        @TempData["Success"]
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
     </div>
 }
 
 <div class="container mt-5">
 
-    <div class="d-flex justify-content-between mb-3">
-
-        <h2>Reservation List</h2>
-
-        <a asp-action="Create"
-           class="btn btn-success">
-
-            Add Reservation
-
-        </a>
-
-    </div>
+    <h2 class="mb-4">Reservation Requests</h2>
 
     <table class="table table-bordered table-striped">
 
         <thead class="table-dark">
-
             <tr>
-                <th>ID</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Phone</th>
                 <th>Room</th>
-                <th>Check In</th>
-                <th>Check Out</th>
-                <th>Status</th>
-                <th>Action</th>
+                <th>Check-In</th>
+                <th>Check-Out</th>
+                <th>Guests</th>
+                <th>Request</th>
+                <th>Actions</th>
             </tr>
-
         </thead>
 
         <tbody>
@@ -45,44 +33,21 @@
             @foreach (var item in Model)
             {
                 <tr>
-
-                    <td>@item.ReservationId</td>
-
                     <td>@item.CustomerName</td>
-
                     <td>@item.Email</td>
-
                     <td>@item.PhoneNumber</td>
-
-                    <td>@item.RoomId</td>
-
-                    <td>
-                        @item.CheckInDate.ToString("yyyy-MM-dd")
-                    </td>
-
-                    <td>
-                        @item.CheckOutDate.ToString("yyyy-MM-dd")
-                    </td>
-
-                    <td>@item.Status</td>
+                    <td>@item.RoomNo</td>
+                    <td>@item.CheckInDate.ToShortDateString()</td>
+                    <td>@item.CheckOutDate.ToShortDateString()</td>
+                    <td>@item.NumberOfGuests</td>
+                    <td>@item.SpecialRequest</td>
 
                     <td>
-
-                        <a asp-action="Edit"
-                           asp-route-id="@item.ReservationId"
-                           class="btn btn-warning btn-sm">
-                            Edit
-                        </a>
-
-                        <a asp-action="Delete"
-                           asp-route-id="@item.ReservationId"
-                           class="btn btn-danger btn-sm"
-                           onclick="return confirm('Delete this reservation?');">
+                        <a asp-action="Delete" asp-route-id="@item.RequestId"
+                           class="btn btn-danger btn-sm">
                             Delete
                         </a>
-
                     </td>
-
                 </tr>
             }
 
@@ -91,4 +56,3 @@
     </table>
 
 </div>
-
