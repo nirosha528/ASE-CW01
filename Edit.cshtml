@@ -1,88 +1,52 @@
-﻿@model Hotelreservation.Models.Reservation
+﻿@model Hotelreservation.Models.Room
 
 <div class="container mt-5">
 
     <div class="card shadow p-4">
 
-        <h2 class="mb-4">Edit Reservation</h2>
+        <h2>Edit Room</h2>
 
         <form asp-action="Edit" method="post">
 
-            @Html.AntiForgeryToken()
-
-            <input type="hidden"
-                   asp-for="ReservationId" />
+            <input type="hidden" asp-for="RoomId" />
 
             <div class="mb-3">
-                <label asp-for="CustomerName"></label>
-                <input asp-for="CustomerName"
-                       class="form-control" />
+                <label>Room Number</label>
+                <input asp-for="RoomNumber" class="form-control" />
             </div>
 
             <div class="mb-3">
-                <label asp-for="Email"></label>
-                <input asp-for="Email"
-                       class="form-control" />
+                <label>Room Type</label>
+                <input asp-for="RoomType" class="form-control" />
             </div>
 
             <div class="mb-3">
-                <label asp-for="PhoneNumber"></label>
-                <input asp-for="PhoneNumber"
-                       class="form-control" />
+                <label>Price</label>
+                <input asp-for="PricePerNight" class="form-control" />
             </div>
 
             <div class="mb-3">
-                <label asp-for="RoomId"></label>
-                <input asp-for="RoomId"
-                       class="form-control" />
+                <label>Capacity</label>
+                <input asp-for="Capacity" class="form-control" />
             </div>
 
             <div class="mb-3">
-                <label asp-for="CheckInDate"></label>
-                <input asp-for="CheckInDate"
-                       type="date"
-                       class="form-control" />
+                <label>Description</label>
+                <textarea asp-for="Description" class="form-control"></textarea>
             </div>
 
             <div class="mb-3">
-                <label asp-for="CheckOutDate"></label>
-                <input asp-for="CheckOutDate"
-                       type="date"
-                       class="form-control" />
+                <label>Image URL</label>
+                <input asp-for="ImageUrl" class="form-control" />
             </div>
 
-            <div class="mb-3">
-                <label asp-for="NumberOfGuests"></label>
-                <input asp-for="NumberOfGuests"
-                       class="form-control" />
+            <div class="form-check mb-3">
+                <input asp-for="IsAvailable" class="form-check-input" />
+                <label>Available</label>
             </div>
 
-            <div class="mb-3">
-                <label asp-for="SpecialRequest"></label>
-                <textarea asp-for="SpecialRequest"
-                          class="form-control"></textarea>
-            </div>
-
-            <div class="mb-3">
-
-                <label asp-for="Status"></label>
-
-                <select asp-for="Status"
-                        class="form-select">
-
-                    <option value="Pending">Pending</option>
-                    <option value="Confirmed">Confirmed</option>
-                    <option value="Cancelled">Cancelled</option>
-
-                </select>
-
-            </div>
-
-            <button type="submit"
-                    class="btn btn-primary w-100">
-
-                Update Reservation
-
+            <button type="submit" class="btn btn-success w-100">
+                Update Room
             </button>
 
         </form>
