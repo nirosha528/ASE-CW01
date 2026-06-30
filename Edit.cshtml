@@ -1,0 +1,92 @@
+﻿@model Hotelreservation.Models.Reservation
+
+<div class="container mt-5">
+
+    <div class="card shadow p-4">
+
+        <h2 class="mb-4">Edit Reservation</h2>
+
+        <form asp-action="Edit" method="post">
+
+            @Html.AntiForgeryToken()
+
+            <input type="hidden"
+                   asp-for="ReservationId" />
+
+            <div class="mb-3">
+                <label asp-for="CustomerName"></label>
+                <input asp-for="CustomerName"
+                       class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Email"></label>
+                <input asp-for="Email"
+                       class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="PhoneNumber"></label>
+                <input asp-for="PhoneNumber"
+                       class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="RoomId"></label>
+                <input asp-for="RoomId"
+                       class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="CheckInDate"></label>
+                <input asp-for="CheckInDate"
+                       type="date"
+                       class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="CheckOutDate"></label>
+                <input asp-for="CheckOutDate"
+                       type="date"
+                       class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="NumberOfGuests"></label>
+                <input asp-for="NumberOfGuests"
+                       class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="SpecialRequest"></label>
+                <textarea asp-for="SpecialRequest"
+                          class="form-control"></textarea>
+            </div>
+
+            <div class="mb-3">
+
+                <label asp-for="Status"></label>
+
+                <select asp-for="Status"
+                        class="form-select">
+
+                    <option value="Pending">Pending</option>
+                    <option value="Confirmed">Confirmed</option>
+                    <option value="Cancelled">Cancelled</option>
+
+                </select>
+
+            </div>
+
+            <button type="submit"
+                    class="btn btn-primary w-100">
+
+                Update Reservation
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
