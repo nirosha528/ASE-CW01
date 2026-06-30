@@ -1,96 +1,33 @@
-﻿@model Hotelreservation.Models.ReservationRequest
+﻿@model Hotelreservation.Models.User
 
-@if (TempData["SuccessMessage"] != null)
-{
-    <div id="successAlert" class="alert alert-success text-center fw-bold">
-        @TempData["SuccessMessage"]
-    </div>
+<div class="container mt-4">
 
-    <script>
-        setTimeout(function () {
-            var alert = document.getElementById("successAlert");
-            if (alert) {
-                alert.style.display = "none";
-            }
-        }, 3000);
-    </script>
-}
+    <h2>Create User</h2>
 
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
+    <form asp-action="Create" method="post">
 
-            <div class="card shadow border-0 rounded-4">
+        <input asp-for="FullName" class="form-control mb-2" placeholder="Full Name" />
+        <input asp-for="Username" class="form-control mb-2" placeholder="Username" />
+        <input asp-for="Password" class="form-control mb-2" placeholder="Password" />
+        <input asp-for="Email" class="form-control mb-2" placeholder="Email" />
+        <input asp-for="PhoneNumber" class="form-control mb-2" placeholder="Phone" />
 
-                <div class="card-header bg-primary text-white text-center">
-                    <h3>Reservation Request</h3>
-                </div>
+        <select asp-for="Role" class="form-control mb-3">
+            <option>Manager</option>
+            <option>Clerk</option>
+            <option>TravelAgency</option>
+            <option>User</option>
+        </select>
 
-                <div class="card-body">
+        <button class="btn btn-success w-100">
+            Save User
+        </button>
 
-                    <form asp-action="Create" method="post">
+    </form>
 
-                        @Html.AntiForgeryToken()
-
-                        <div asp-validation-summary="All" class="text-danger mb-3"></div>
-
-                        <div class="mb-2">
-                            <input asp-for="CustomerName" class="form-control" placeholder="Customer Name" />
-                            <span asp-validation-for="CustomerName" class="text-danger"></span>
-                        </div>
-
-                        <div class="mb-2">
-                            <input asp-for="Email" class="form-control" placeholder="Email" />
-                            <span asp-validation-for="Email" class="text-danger"></span>
-                        </div>
-
-                        <div class="mb-2">
-                            <input asp-for="PhoneNumber" class="form-control" placeholder="Phone Number" />
-                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-                        </div>
-
-                        <div class="mb-2">
-                            <input asp-for="RoomNo" class="form-control" placeholder="Room Number" />
-                            <span asp-validation-for="RoomNo" class="text-danger"></span>
-                        </div>
-
-                        <div class="mb-2">
-                            <input asp-for="CheckInDate" type="date" class="form-control" />
-                            <span asp-validation-for="CheckInDate" class="text-danger"></span>
-                        </div>
-
-                        <div class="mb-2">
-                            <input asp-for="CheckOutDate" type="date" class="form-control" />
-                            <span asp-validation-for="CheckOutDate" class="text-danger"></span>
-                        </div>
-
-                        <div class="mb-2">
-                            <input asp-for="NumberOfGuests" class="form-control" placeholder="Number of Guests" />
-                            <span asp-validation-for="NumberOfGuests" class="text-danger"></span>
-                        </div>
-
-                        <div class="mb-3">
-                            <textarea asp-for="SpecialRequest" class="form-control" placeholder="Special Request"></textarea>
-                            <span asp-validation-for="SpecialRequest" class="text-danger"></span>
-                        </div>
-
-                        <button type="submit" class="btn btn-success w-100">
-                            Submit Request
-                        </button>
-
-                    </form>
-
-                </div>
-
-            </div>
-
-        </div>
-    </div>
 </div>
-
-
-@section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
-}
+<a asp-controller="Manager"
+   asp-action="Dashboard"
+   class="btn btn-secondary mb-3">
+    ⬅ Back to Admin Dashboard
+</a>
