@@ -1,0 +1,49 @@
+﻿@model List<Hotelreservation.Models.Room>
+
+<div class="container mt-4">
+
+    <h2>Available Rooms</h2>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-warning">
+            No rooms available.
+        </div>
+    }
+
+    <div class="row">
+
+        @foreach (var room in Model)
+        {
+            <div class="col-md-4 mb-3">
+
+                <div class="card shadow">
+
+
+                    <img src="~/images/@room.ImageUrl"
+                         class="card-img-top"
+                         style="height:200px; object-fit:cover;" />
+
+
+                    
+
+                    <div class="card-body">
+
+                        <h5>@room.RoomType - @room.RoomNumber</h5>
+
+                        <p>@room.Description</p>
+
+                        <p><b>Price:</b> @room.PricePerNight</p>
+
+                        <span class="badge bg-success">Available</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+        }
+
+    </div>
+
+</div>
