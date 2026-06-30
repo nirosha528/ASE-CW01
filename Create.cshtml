@@ -1,94 +1,91 @@
-﻿@model Hotelreservation.Models.Reservation
+﻿@model Hotelreservation.Models.ReservationRequest
 
-@{
-    ViewData["Title"] = "Create Reservation";
-}
-
-@if (TempData["Success"] != null)
+@if (TempData["SuccessMessage"] != null)
 {
-    <div class="alert alert-success text-center fw-bold">
-        @TempData["Success"]
+    <div id="successAlert" class="alert alert-success text-center fw-bold">
+        @TempData["SuccessMessage"]
     </div>
+
+    <script>
+        setTimeout(function () {
+            var alert = document.getElementById("successAlert");
+            if (alert) {
+                alert.style.display = "none";
+            }
+        }, 3000);
+    </script>
 }
 
 <div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
 
-    <div class="card shadow p-4">
+            <div class="card shadow border-0 rounded-4">
 
-        <h2 class="mb-4">Add Reservation</h2>
+                <div class="card-header bg-primary text-white text-center">
+                    <h3>Reservation Request</h3>
+                </div>
 
-        <form asp-action="Create" method="post">
-            @Html.AntiForgeryToken()
+                <div class="card-body">
 
-            <div asp-validation-summary="All" class="text-danger"></div>
+                    <form asp-action="Create" method="post">
 
-            <!-- Customer Name -->
-            <div class="mb-3">
-                <input asp-for="CustomerName" class="form-control" placeholder="Customer Name" />
-                <span asp-validation-for="CustomerName" class="text-danger"></span>
+                        @Html.AntiForgeryToken()
+
+                        <div asp-validation-summary="All" class="text-danger mb-3"></div>
+
+                        <div class="mb-2">
+                            <input asp-for="CustomerName" class="form-control" placeholder="Customer Name" />
+                            <span asp-validation-for="CustomerName" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-2">
+                            <input asp-for="Email" class="form-control" placeholder="Email" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-2">
+                            <input asp-for="PhoneNumber" class="form-control" placeholder="Phone Number" />
+                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-2">
+                            <input asp-for="RoomNo" class="form-control" placeholder="Room Number" />
+                            <span asp-validation-for="RoomNo" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-2">
+                            <input asp-for="CheckInDate" type="date" class="form-control" />
+                            <span asp-validation-for="CheckInDate" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-2">
+                            <input asp-for="CheckOutDate" type="date" class="form-control" />
+                            <span asp-validation-for="CheckOutDate" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-2">
+                            <input asp-for="NumberOfGuests" class="form-control" placeholder="Number of Guests" />
+                            <span asp-validation-for="NumberOfGuests" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <textarea asp-for="SpecialRequest" class="form-control" placeholder="Special Request"></textarea>
+                            <span asp-validation-for="SpecialRequest" class="text-danger"></span>
+                        </div>
+
+                        <button type="submit" class="btn btn-success w-100">
+                            Submit Request
+                        </button>
+
+                    </form>
+
+                </div>
+
             </div>
 
-            <!-- Email -->
-            <div class="mb-3">
-                <input asp-for="Email" class="form-control" placeholder="Email" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-
-            <!-- Phone -->
-            <div class="mb-3">
-                <input asp-for="PhoneNumber" class="form-control" placeholder="Phone Number" />
-                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-            </div>
-
-            <!-- ROOM DROPDOWN -->
-            <div class="mb-3">
-                <select asp-for="RoomId" class="form-control">
-                    <option value="">-- Select Room --</option>
-
-                    @foreach (var room in ViewBag.Rooms)
-                    {
-                        <option value="@room.RoomId">
-                            Room @room.RoomId
-                        </option>
-                    }
-                </select>
-                <span asp-validation-for="RoomId" class="text-danger"></span>
-            </div>
-
-            <!-- Check In -->
-            <div class="mb-3">
-                <label>Check In</label>
-                <input asp-for="CheckInDate" type="date" class="form-control" />
-                <span asp-validation-for="CheckInDate" class="text-danger"></span>
-            </div>
-
-            <!-- Check Out -->
-            <div class="mb-3">
-                <label>Check Out</label>
-                <input asp-for="CheckOutDate" type="date" class="form-control" />
-                <span asp-validation-for="CheckOutDate" class="text-danger"></span>
-            </div>
-
-            <!-- Guests -->
-            <div class="mb-3">
-                <input asp-for="NumberOfGuests" class="form-control" placeholder="Number of Guests" />
-                <span asp-validation-for="NumberOfGuests" class="text-danger"></span>
-            </div>
-
-            <!-- Special Request -->
-            <div class="mb-3">
-                <textarea asp-for="SpecialRequest" class="form-control" placeholder="Special Request"></textarea>
-            </div>
-
-            <!-- BUTTON -->
-            <button type="submit" class="btn btn-success w-100">
-                Save Reservation
-            </button>
-
-        </form>
-
+        </div>
     </div>
-
 </div>
 
 
