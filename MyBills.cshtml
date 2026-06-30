@@ -1,0 +1,31 @@
+﻿@model Hotelreservation.Models.Payment
+
+@{
+    ViewData["Title"] = "My Bills";
+}
+
+<div class="container mt-4">
+
+    <!-- SEARCH FORM -->
+    <form asp-action="MyBills" method="get">
+        <input type="text" name="customerName" class="form-control" placeholder="Enter Customer Name" />
+        <br />
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+
+    <hr />
+
+    <!-- 🔥 ADD YOUR CODE HERE -->
+    @if (Model != null)
+    {
+        <h3>@Model.CustomerName</h3>
+        <p>Total: @Model.TotalAmount</p>
+    }
+    else
+    {
+        <div class="alert alert-warning">
+            No bill found for this customer.
+        </div>
+    }
+
+</div>
