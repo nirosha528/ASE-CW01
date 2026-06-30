@@ -1,0 +1,38 @@
+﻿@model List<Hotelreservation.Models.Payment>
+
+<div class="container mt-4">
+
+    <h2 class="mb-3">Revenue Report</h2>
+
+    <div class="alert alert-success">
+        <h4>Total Revenue: Rs. @ViewBag.TotalRevenue</h4>
+    </div>
+
+    <table class="table table-bordered">
+
+        <thead class="table-dark">
+            <tr>
+                <th>Payment ID</th>
+                <th>Reservation ID</th>
+                <th>Total Amount</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.PaymentId</td>
+                    <td>@item.ReservationId</td>
+                    <td>@item.TotalAmount</td>
+                    <td>@item.PaymentDate</td>
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+
+</div>
