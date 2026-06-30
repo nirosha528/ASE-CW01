@@ -7,7 +7,7 @@
     @if (!Model.Any())
     {
         <div class="alert alert-warning">
-            No rooms available.
+            No rooms available at the moment.
         </div>
     }
 
@@ -19,13 +19,9 @@
 
                 <div class="card shadow">
 
-
-                    <img src="~/images/@room.ImageUrl"
+                    <img src="@room.ImageUrl"
                          class="card-img-top"
                          style="height:200px; object-fit:cover;" />
-
-
-                    
 
                     <div class="card-body">
 
