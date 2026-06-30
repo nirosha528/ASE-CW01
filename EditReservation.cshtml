@@ -1,0 +1,45 @@
+﻿@model Hotelreservation.Models.Reservation
+
+<div class="container mt-4">
+
+    <div class="bg-dark text-white p-3 rounded mb-3">
+        <h3 class="mb-0">Edit Reservation</h3>
+    </div>
+
+    <form asp-action="EditReservation" method="post">
+
+        <input type="hidden" asp-for="ReservationId" />
+
+        <!-- CHECK IN -->
+        <div class="mb-3">
+            <label class="form-label">Check In</label>
+            <input asp-for="CheckInDate" class="form-control" type="date" />
+        </div>
+
+        <!-- CHECK OUT -->
+        <div class="mb-3">
+            <label class="form-label">Check Out</label>
+            <input asp-for="CheckOutDate" class="form-control" type="date" />
+        </div>
+
+        <!-- GUESTS -->
+        <div class="mb-3">
+            <label class="form-label">Guests</label>
+            <input asp-for="NumberOfGuests" class="form-control" />
+        </div>
+
+        <!-- SPECIAL REQUEST -->
+        <div class="mb-3">
+            <label class="form-label">Special Request</label>
+            <textarea asp-for="SpecialRequest" class="form-control"></textarea>
+        </div>
+
+        <!-- BUTTON -->
+        <button type="submit" class="btn btn-success w-100">
+            Update Reservation
+        </button>
+
+
+    </form>
+
+</div>
