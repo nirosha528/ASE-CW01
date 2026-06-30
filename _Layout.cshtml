@@ -1,0 +1,286 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>@ViewData["Title"] - HotelReservationSystem</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+</head>
+
+<body>
+
+    <!-- TOP HEADER -->
+    <div class="top-header text-white">
+
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+
+                <!-- LEFT -->
+                <div class="d-flex align-items-center gap-4 flex-wrap">
+
+                    <div class="fw-bold">
+                        Hotel Reservation Center
+                    </div>
+
+                    <div class="small">
+                        📞 +94 77 123 4567
+                    </div>
+
+                    <div class="small">
+                        ✉ hotel@gmail.com
+                    </div>
+
+                </div>
+
+                <!-- RIGHT BUTTON -->
+                <button type="button"
+                        class="btn btn-warning fw-bold px-4 rounded-pill"
+                        data-bs-toggle="modal"
+                        data-bs-target="#availabilityModal">
+
+                    Availability
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
+
+        <div class="container">
+
+            <!-- BRAND -->
+            <a class="navbar-brand fw-bold"
+               asp-controller="Home"
+               asp-action="Index">
+
+                <span class="text-warning">Hotel</span>
+                Reservation
+
+            </a>
+
+            <!-- MOBILE TOGGLER -->
+            <button class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#mainNavbar">
+
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+
+            <!-- MENU -->
+            <div class="collapse navbar-collapse" id="mainNavbar">
+
+                <ul class="navbar-nav ms-auto align-items-lg-center gap-3">
+
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Home" asp-action="About">
+                            About
+                        </a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Room" asp-action="List">
+                            Rooms
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           asp-controller="ReservationRequest"
+                           asp-action="Create">
+                            Reservation
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+
+                        <button type="button"
+                                class="btn btn-warning rounded-pill px-4"
+                                data-bs-toggle="modal"
+                                data-bs-target="#loginModal">
+
+                            Login
+
+                        </button>
+
+                    </li>
+
+                   
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+    <!-- LOGIN MODAL -->
+    <div class="modal fade" id="loginModal" tabindex="-1">
+
+        <div class="modal-dialog modal-dialog-centered">
+
+            <div class="modal-content p-3">
+
+                <!-- HEADER -->
+                <div class="modal-header border-0">
+
+                    <h5 class="modal-title fw-bold">
+                        Login Access
+                    </h5>
+
+                    <button type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"></button>
+
+                </div>
+
+                <!-- LOGIN FORM -->
+                <div class="modal-body">
+
+                    <form asp-controller="Account" asp-action="Login" method="post">
+
+                        <!-- USERNAME -->
+                        <div class="mb-3">
+                            <label class="form-label">Username</label>
+                            <input type="text"
+                                   name="Username"
+                                   class="form-control"
+                                   placeholder="Enter Username"
+                                   required />
+                        </div>
+
+                        <!-- PASSWORD -->
+                        <div class="mb-3">
+                            <label class="form-label">Password</label>
+                            <input type="password"
+                                   name="Password"
+                                   class="form-control"
+                                   required />
+                        </div>
+
+                        <!-- LOGIN BUTTON -->
+                        <button type="submit"
+                                class="btn btn-warning w-100 fw-bold rounded-pill">
+                            Login
+                        </button>
+
+                    </form>
+
+                </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    
+
+
+    <!-- AVAILABILITY MODAL -->
+    <div class="modal fade" id="availabilityModal" tabindex="-1">
+
+        <div class="modal-dialog modal-dialog-centered">
+
+            <div class="modal-content p-3">
+
+                <!-- HEADER -->
+                <div class="modal-header border-0">
+
+                    <h5 class="modal-title fw-bold">
+                        Check Availability
+                    </h5>
+
+                    <button type="button" class="btn-close"
+                            data-bs-dismiss="modal"></button>
+
+                </div>
+
+                <!-- FORM -->
+                <div class="modal-body">
+
+                    <form>
+
+                        <!-- ROOM TYPE -->
+                        <div class="mb-3">
+                            <label class="form-label">Accommodation Type</label>
+
+                            <select class="form-select">
+                                <option>Standard Room</option>
+                                <option>Deluxe Room</option>
+                                <option>Luxury Suite</option>
+                            </select>
+                        </div>
+
+                        <!-- CHECK IN -->
+                        <div class="mb-3">
+                            <label class="form-label">Check-In</label>
+                            <input type="date" class="form-control" />
+                        </div>
+
+                        <!-- CHECK OUT -->
+                        <div class="mb-3">
+                            <label class="form-label">Check-Out</label>
+                            <input type="date" class="form-control" />
+                        </div>
+
+                        
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="container my-4">
+
+        <main role="main">
+
+            @RenderBody()
+
+        </main>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-light border-top py-3 text-center text-muted">
+
+        <div class="container">
+            &copy; 2026 - HotelReservation | All Rights Reserved
+            hotel@gmail.com    +94 771234567
+        </div>
+
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>
