@@ -1,0 +1,183 @@
+﻿@{
+    ViewData["Title"] = "Clerk Dashboard";
+}
+
+<div class="container mt-5">
+
+    <!-- HEADER -->
+    <div class="text-center mb-5">
+
+        <h1 class="fw-bold text-primary">
+            Clerk Dashboard
+        </h1>
+
+        <p class="text-muted fs-5">
+            Hotel Reservation Management System
+        </p>
+
+    </div>
+
+    <!-- DASHBOARD CARDS -->
+    <div class="row g-4 justify-content-center">
+
+
+        <!-- VIEW REQUESTS -->
+        <div class="col-lg-3 col-md-6">
+
+            <div class="card shadow-lg border-0 dashboard-card text-center p-4">
+
+                <div class="dashboard-icon mb-3">
+                    📩
+                </div>
+
+                <h3 class="fw-bold">
+                    Requests
+                </h3>
+
+                <p class="text-muted">
+                    View customer reservation requests
+                </p>
+
+                <a href="/ReservationRequest/Index"
+                   class="btn btn-success rounded-pill px-4">
+
+                    View Reservations Requests
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- ADD RESERVATION -->
+        <div class="col-md-4">
+
+            <div class="card shadow border-0 rounded-4 h-100">
+
+                <div class="card-body text-center p-4">
+
+                    <div class="display-4 mb-3">
+                        🏨
+                    </div>
+
+                    <h4 class="fw-bold">
+                        Add Reservation
+                    </h4>
+
+                    <p class="text-muted">
+                        Create a new reservation for customers.
+                    </p>
+
+                    <a href="/Reservation/Create"
+                       class="btn btn-primary rounded-pill px-4">
+
+                        Add Reservation
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- VIEW RESERVATIONS -->
+        <div class="col-md-4">
+
+            <div class="card shadow border-0 rounded-4 h-100">
+
+                <div class="card-body text-center p-4">
+
+                    <div class="display-4 mb-3">
+                        📋
+                    </div>
+
+                    <h4 class="fw-bold">
+                        View Reservations
+                    </h4>
+
+                    <p class="text-muted">
+                        View and manage reservations.
+                    </p>
+
+                    <a href="/Reservation/Index"
+                       class="btn btn-success rounded-pill px-4">
+
+                        View Reservations
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- VIEW ROOMS -->
+        <div class="col-md-4">
+
+            <div class="card shadow border-0 rounded-4 h-100">
+
+                <div class="card-body text-center p-4">
+
+                    <div class="display-4 mb-3">
+                        🛏️
+                    </div>
+
+                    <h4 class="fw-bold">
+                        View Rooms
+                    </h4>
+
+                    <p class="text-muted">
+                        Check room availability and details.
+                    </p>
+
+                    <a href="/Room/List"
+                       class="btn btn-warning rounded-pill px-4">
+
+                        View Rooms
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PAYMENT -->
+        <div class="col-md-4">
+
+            <div class="card shadow border-0 rounded-4 h-100">
+
+                <div class="card-body text-center p-4">
+
+                    <div class="display-4 mb-3">
+                        💳
+                    </div>
+
+                    <h4 class="fw-bold">
+                        Payments
+                    </h4>
+
+                    <p class="text-muted">
+                        Manage customer payments and billing records.
+                    </p>
+
+                    <a href="/Payment/Create"
+                       class="btn btn-danger rounded-pill px-4">
+
+                        View Payments
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
