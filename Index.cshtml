@@ -1,61 +1,94 @@
-﻿@model Hotelreservation.Models.ReportViewModel
+﻿@model List<Hotelreservation.Models.Reservation>
 
-<div class="container mt-4">
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success text-center fw-bold">
+        @TempData["Success"]
+    </div>
+}
 
-    <h2 class="mb-4">Customer Analytics Report</h2>
+<div class="container mt-5">
 
-    <!-- CARDS -->
-    <div class="row text-center mb-4">
+    <div class="d-flex justify-content-between mb-3">
 
-        <div class="col-md-4">
-            <div class="card shadow p-3">
-                <h5>Total Reservations</h5>
-                <h2>@Model.TotalReservations</h2>
-            </div>
-        </div>
+        <h2>Reservation List</h2>
 
-        <div class="col-md-4">
-            <div class="card shadow p-3">
-                <h5>Total Users</h5>
-                <h2>@Model.TotalUsers</h2>
-            </div>
-        </div>
+        <a asp-action="Create"
+           class="btn btn-success">
 
-        <div class="col-md-4">
-            <div class="card shadow p-3">
-                <h5>Total Rooms</h5>
-                <h2>@Model.TotalRooms</h2>
-            </div>
-        </div>
+            Add Reservation
+
+        </a>
 
     </div>
 
-    <!-- CHART -->
-    <div class="card shadow p-4">
+    <table class="table table-bordered table-striped">
 
-        <h4>Monthly Reservations Report</h4>
+        <thead class="table-dark">
 
-        <canvas id="reportChart"></canvas>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Room</th>
+                <th>Check In</th>
+                <th>Check Out</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
 
-    </div>
+        </thead>
+
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>@item.ReservationId</td>
+
+                    <td>@item.CustomerName</td>
+
+                    <td>@item.Email</td>
+
+                    <td>@item.PhoneNumber</td>
+
+                    <td>@item.RoomId</td>
+
+                    <td>
+                        @item.CheckInDate.ToString("yyyy-MM-dd")
+                    </td>
+
+                    <td>
+                        @item.CheckOutDate.ToString("yyyy-MM-dd")
+                    </td>
+
+                    <td>@item.Status</td>
+
+                    <td>
+
+                        <a asp-action="Edit"
+                           asp-route-id="@item.ReservationId"
+                           class="btn btn-warning btn-sm">
+                            Edit
+                        </a>
+
+                        <a asp-action="Delete"
+                           asp-route-id="@item.ReservationId"
+                           class="btn btn-danger btn-sm"
+                           onclick="return confirm('Delete this reservation?');">
+                            Delete
+                        </a>
+
+                    </td>
+
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
 
 </div>
 
-<!-- CHART JS -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-<script>
-    var ctx = document.getElementById('reportChart').getContext('2d');
-
-    new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.Months)),
-            datasets: [{
-                label: 'Reservations',
-                data: @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.ReservationCounts)),
-                backgroundColor: 'rgba(54, 162, 235, 0.7)'
-            }]
-        }
-    });
-</script>
