@@ -1,201 +1,61 @@
-﻿@{
-    ViewData["Title"] = "Home";
-}
+﻿@model Hotelreservation.Models.ReportViewModel
 
-<!-- HERO SECTION -->
-<div class="container-fluid p-0">
+<div class="container mt-4">
 
-    <div class="hero-banner position-relative">
+    <h2 class="mb-4">Customer Analytics Report</h2>
 
-        <!-- Background Image -->
-        <img src="~/images/hotel.jpg"
-             alt="Hotel Banner"
-             class="img-fluid w-100 hero-img" />
+    <!-- CARDS -->
+    <div class="row text-center mb-4">
 
-        <!-- Overlay -->
-        <div class="hero-overlay"></div>
+        <div class="col-md-4">
+            <div class="card shadow p-3">
+                <h5>Total Reservations</h5>
+                <h2>@Model.TotalReservations</h2>
+            </div>
+        </div>
 
-        <!-- Content -->
-        <div class="hero-content text-center text-white">
+        <div class="col-md-4">
+            <div class="card shadow p-3">
+                <h5>Total Users</h5>
+                <h2>@Model.TotalUsers</h2>
+            </div>
+        </div>
 
-            <h1 class="display-3 fw-bold">
-                Welcome to Hotel Reservation
-            </h1>
-
-            <p class="lead fs-4 mt-3">
-                Luxury Rooms • Premium Service • Easy Booking
-            </p>
-
-            <a asp-controller="Reservation"
-               asp-action="Create"
-               class="btn btn-warning btn-lg px-5 py-3 mt-4 fw-bold">
-
-                Book Now
-
-            </a>
-
-            <br /><br />
-
-            <!--CHECK AVAILABILITY BUTTON -->
-            <a asp-controller="Home"
-               asp-action="CheckAvailability"
-               class="btn btn-success btn-lg px-4">
-
-                Check Availability
-
-            </a>
-
+        <div class="col-md-4">
+            <div class="card shadow p-3">
+                <h5>Total Rooms</h5>
+                <h2>@Model.TotalRooms</h2>
+            </div>
         </div>
 
     </div>
-</div>
 
-<!-- ABOUT SECTION -->
-<div class="container my-5">
+    <!-- CHART -->
+    <div class="card shadow p-4">
 
-    <div class="row align-items-center g-5">
+        <h4>Monthly Reservations Report</h4>
 
-        <div class="col-md-6">
-
-            <h2 class="fw-bold mb-3">
-                Experience Luxury & Comfort
-            </h2>
-
-            <p class="text-muted">
-                Our hotel reservation system provides modern rooms,
-                premium facilities, secure booking, and excellent customer service.
-            </p>
-
-            <a class="btn btn-primary"
-               asp-controller="Room"
-               asp-action="List">
-
-                View Rooms
-
-            </a>
-
-        </div>
-
-        <div class="col-md-6">
-
-            <img src="~/images/room.jpg"
-                 class="img-fluid rounded shadow-lg" />
-
-        </div>
+        <canvas id="reportChart"></canvas>
 
     </div>
 
 </div>
 
-<!-- FEATURED ROOMS SECTION -->
-<div class="container my-5">
+<!-- CHART JS -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <div class="text-center mb-4">
+<script>
+    var ctx = document.getElementById('reportChart').getContext('2d');
 
-        <h2 class="fw-bold">
-            Featured Rooms
-        </h2>
-
-        <p class="text-muted">
-            Explore our most popular and comfortable rooms
-        </p>
-
-    </div>
-
-    <div class="row g-4">
-
-        <!-- ROOM 1 -->
-        <div class="col-md-4">
-
-            <div class="card border-0 shadow-lg h-100">
-
-                <img src="~/images/room1.jpg"
-                     class="card-img-top"
-                     style="height:250px; object-fit:cover;" />
-
-                <div class="card-body text-center">
-
-                    <h5 class="fw-bold">Deluxe Room</h5>
-                    <p class="text-muted">Spacious room with luxury comfort.</p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <!-- ROOM 2 -->
-        <div class="col-md-4">
-
-            <div class="card border-0 shadow-lg h-100">
-
-                <img src="~/images/room2.jpg"
-                     class="card-img-top"
-                     style="height:250px; object-fit:cover;" />
-
-                <div class="card-body text-center">
-
-                    <h5 class="fw-bold">Luxury Suite</h5>
-                    <p class="text-muted">Premium suite with modern facilities.</p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <!-- ROOM 3 -->
-        <div class="col-md-4">
-
-            <div class="card border-0 shadow-lg h-100">
-
-                <img src="~/images/room3.jpg"
-                     class="card-img-top"
-                     style="height:250px; object-fit:cover;" />
-
-                <div class="card-body text-center">
-
-                    <h5 class="fw-bold">Standard Room</h5>
-                    <p class="text-muted">Affordable and comfortable stay.</p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-<!-- STYLE -->
-<style>
-
-    .hero-banner {
-        position: relative;
-        height: 90vh;
-        overflow: hidden;
-    }
-
-    .hero-img {
-        height: 90vh;
-        object-fit: cover;
-    }
-
-    .hero-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0,0,0,0.5);
-    }
-
-    .hero-content {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
-
-</style>
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.Months)),
+            datasets: [{
+                label: 'Reservations',
+                data: @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.ReservationCounts)),
+                backgroundColor: 'rgba(54, 162, 235, 0.7)'
+            }]
+        }
+    });
+</script>
